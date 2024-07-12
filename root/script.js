@@ -1,3 +1,4 @@
+//script.js
 document.addEventListener('DOMContentLoaded', () => {
     const sendButton = document.getElementById('send-button');
     const messageInput = document.getElementById('message-input');
