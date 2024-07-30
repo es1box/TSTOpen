@@ -6,28 +6,77 @@
     <title>Countdown Timer</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background: linear-gradient(to right, #cceeff, #e6f7ff);
+            color: #0066cc;
         }
         #timer {
             font-size: 2em;
             margin-top: 20px;
+            background-color: #ffffff;
+            border: 3px solid #66b3ff;
+            border-radius: 10px;
+            display: inline-block;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .ascii-art {
+            margin-top: 20px;
+            font-size: 1.2em;
+            white-space: pre;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            body {
+                margin-top: 20px;
+            }
+            #timer {
+                font-size: 1.5em;
+                padding: 5px 10px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .ascii-art {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Отсчет врнмени for Янка</h1>
-    <p>Целевая дата: <strong id="target-date">2024-08-02 19:15:0</strong></p>
+    <h1>Отсчет времени до жамканий)</h1>
+    <p>Целевая дата: <strong id="target-date">2024-08-02 19:15:00</strong></p>
     <div id="timer"></div>
+    <div class="ascii-art">
+        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿<br>
+        　　　　|＼　　　　　　／|　　　　　　　　　　　 ,、<br>
+        　　　　|＼＼　　　　／／|　　　　　lヽ　　　　　i i<br>
+        　　　　ヽ 　,>｀´￣｀´ < ﾉ　　　　　 ｙヽ'￣￣￣´ ﾚ<br>
+        　　 　 　y　　　　　　　 ﾚ　　　　　 / ;;;;○';;';;○;;;;ヽ<br>
+        　　　　／　● 　　 ●　　　＼　　　　/　(;;;,(;;;),;;;)　＼<br>
+        　　　/　　　　 ､_,_,　　　 　＼　　/ _,　　´￣｀⊂二二)<br>
+        　　 |　 i　　　　　　　　　ヽ､_ヽl　|　　　　　　　|<br>
+        　　└二二⊃　　　　 　　 　 l　　∪　 |　　　 　 　 　 |<br>
+        　　　　 |　　　,､___,　　ノ　　　　|　　　,、　　　|<br>
+        　　　　 ヽ＿二コ/　　 ／　　　　　ヽ　　/　＼　　 /　<br>
+        　　 　　_______/__／´　　　　　＿＿ヽノ＿___｀´<br>
+    </div>
 
     <script>
         function updateTimer() {
-            // Целевая дата и время
             const targetDate = new Date('2024-08-02T19:15:00');
-            // Текущая дата и время
             const now = new Date();
-            // Разница между целевой датой и текущим временем
             const timeDifference = targetDate - now;
 
             if (timeDifference < 0) {
@@ -35,20 +84,15 @@
                 return;
             }
 
-            // Разбиваем разницу на дни, часы, минуты и секунды
             const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            // Обновляем текст на странице
             document.getElementById('timer').innerText = `${days} дней ${hours} часов ${minutes} минут ${seconds} секунд`;
         }
 
-        // Обновляем таймер каждую секунду
         setInterval(updateTimer, 1000);
-
-        // Инициализируем таймер сразу при загрузке страницы
         updateTimer();
     </script>
 </body>
