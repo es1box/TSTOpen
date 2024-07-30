@@ -1,33 +1,55 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GMod Telegram</title>
-    <link rel="stylesheet" href="root/style.css">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #timer {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <div id="sidebar">
-            <div id="sidebar-header">
-                <h1>GMod Telegram</h1>
-            </div>
-            <div id="chat-list">
-                <input type="text" id="search" placeholder="Search users...">
-                <ul id="chats"></ul>
-                <input type="text" id="group-name-input" placeholder="Group name...">
-                <button id="create-group-button">Create Group</button>
-            </div>
-        </div>
-        <div id="main-content">
-            <div id="chat-window">
-                <div id="messages"></div>
-                <input type="text" id="message-input" placeholder="Type a message...">
-                <button id="send-button">Send</button>
-            </div>
-        </div>
-    </div>
-    <script src="root/script.js"></script>
+    <h1>Отсчет врнмени for Янка</h1>
+    <p>Целевая дата: <strong id="target-date">2024-08-02 19:15:0</strong></p>
+    <div id="timer"></div>
+
+    <script>
+        function updateTimer() {
+            // Целевая дата и время
+            const targetDate = new Date('2024-08-02T19:15:00');
+            // Текущая дата и время
+            const now = new Date();
+            // Разница между целевой датой и текущим временем
+            const timeDifference = targetDate - now;
+
+            if (timeDifference < 0) {
+                document.getElementById('timer').innerText = "Time's up!";
+                return;
+            }
+
+            // Разбиваем разницу на дни, часы, минуты и секунды
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // Обновляем текст на странице
+            document.getElementById('timer').innerText = `${days} дней ${hours} часов ${minutes} минут ${seconds} секунд`;
+        }
+
+        // Обновляем таймер каждую секунду
+        setInterval(updateTimer, 1000);
+
+        // Инициализируем таймер сразу при загрузке страницы
+        updateTimer();
+    </script>
 </body>
 </html>
