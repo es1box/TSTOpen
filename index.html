@@ -8,7 +8,7 @@
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 20px;
             background: linear-gradient(to right, #cceeff, #e6f7ff);
             color: #0066cc;
         }
@@ -23,13 +23,11 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 10px;
         }
-        .ascii-art {
-            margin-top: 20px;
-            font-size: 1.2em;
-            white-space: pre;
+        .emoji {
+            font-size: 2em;
             animation: blink 1s infinite;
         }
         @keyframes blink {
@@ -39,39 +37,26 @@
         }
         @media (max-width: 600px) {
             body {
-                margin-top: 20px;
+                margin-top: 10px;
             }
             #timer {
                 font-size: 1.5em;
                 padding: 5px 10px;
             }
             h1 {
-                font-size: 2em;
+                font-size: 1.5em;
             }
-            .ascii-art {
-                font-size: 1em;
+            .emoji {
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Отсчет времени до жамканий)</h1>
+    <h1>Отсчет времени для Янка</h1>
     <p>Целевая дата: <strong id="target-date">2024-08-02 19:15:00</strong></p>
     <div id="timer"></div>
-    <div class="ascii-art">
-        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿<br>
-        　　　　|＼　　　　　　／|　　　　　　　　　　　 ,、<br>
-        　　　　|＼＼　　　　／／|　　　　　lヽ　　　　　i i<br>
-        　　　　ヽ 　,>｀´￣｀´ < ﾉ　　　　　 ｙヽ'￣￣￣´ ﾚ<br>
-        　　 　 　y　　　　　　　 ﾚ　　　　　 / ;;;;○';;';;○;;;;ヽ<br>
-        　　　　／　● 　　 ●　　　＼　　　　/　(;;;,(;;;),;;;)　＼<br>
-        　　　/　　　　 ､_,_,　　　 　＼　　/ _,　　´￣｀⊂二二)<br>
-        　　 |　 i　　　　　　　　　ヽ､_ヽl　|　　　　　　　|<br>
-        　　└二二⊃　　　　 　　 　 l　　∪　 |　　　 　 　 　 |<br>
-        　　　　 |　　　,､___,　　ノ　　　　|　　　,、　　　|<br>
-        　　　　 ヽ＿二コ/　　 ／　　　　　ヽ　　/　＼　　 /　<br>
-        　　 　　_______/__／´　　　　　＿＿ヽノ＿___｀´<br>
-    </div>
+    <div class="emoji">🥰 🥰 🥰 🥰 🥰</div>
 
     <script>
         function updateTimer() {
