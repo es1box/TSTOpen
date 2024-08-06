@@ -6,25 +6,28 @@
     <title>Countdown Timer</title>
     <style>
         body {
-            font-family: 'Times New Roman', Times, serif; /* Set font to Times New Roman */
+            font-family: 'Times New Roman', Times, serif;
             text-align: center;
             margin-top: 20px;
-            background-color: rgb(207, 218, 204); /* Changed background color */
+            background-color: rgb(207, 218, 204);
             color: #0066cc;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
         }
         #timer {
             font-size: 2em;
             margin-top: 20px;
-            background-color: rgb(207, 218, 204); /* Background matches the page's background */
-            border: 3px solid rgb(20, 66, 50); /* Changed border color */
+            background-color: rgb(207, 218, 204);
+            border: 3px solid rgb(20, 66, 50);
             border-radius: 10px;
             display: inline-block;
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            color: rgb(20, 66, 50); /* Changed text color */
+            color: rgb(20, 66, 50);
         }
         h1, p {
-            color: rgb(20, 66, 50); /* Changed text color */
+            color: rgb(20, 66, 50);
         }
         h1 {
             font-size: 2em;
@@ -32,7 +35,7 @@
         }
         .emoji {
             font-size: 2em;
-            animation: blink 2s infinite; /* Slowed down animation */
+            animation: blink 2s infinite;
         }
         @keyframes blink {
             0% { opacity: 1; }
@@ -54,13 +57,22 @@
                 font-size: 1.5em;
             }
         }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
     <h1>Отсчет времени до жамканий)))</h1>
     <p>Целевая дата: <strong id="target-date">2024-08-02 16:00:00</strong></p>
     <div id="timer"></div>
-    <div class="emoji">🥰 🥰 🥰 🥰 🥰</div>
+    <div class="emoji">🥰 🥰 🥰 🥰 🥰 🥰 🥰 🥰 🥰 🥰</div>
+    <canvas id="particleCanvas"></canvas>
 
     <script>
         function updateTimer() {
@@ -83,6 +95,48 @@
 
         setInterval(updateTimer, 1000);
         updateTimer();
+
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const particleCount = 300;
+        const emojis = ['❤️', '💖', '💛', '💚', '🧡', '❤️', '💜', '💕', '💜', '💖', '💙', '💗', '💘', '💝', '🤍'];
+
+        function createParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 30 ,  // Increased size
+                    speedX: Math.random() * 2 - 1,
+                    speedY: Math.random() * 2 - 1,
+                    emoji: emojis[Math.floor(Math.random() * emojis.length)]
+                });
+            }
+        }
+
+        function drawHeart(x, y, size, emoji) {
+            ctx.font = `${size}px Arial`;
+            ctx.fillText(emoji, x, y);
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let particle of particles) {
+                drawHeart(particle.x, particle.y, particle.size, particle.emoji);
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                if (particle.x > canvas.width || particle.x < 0) particle.speedX *= -1;
+                if (particle.y > canvas.height || particle.y < 0) particle.speedY *= -1;
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        createParticles();
+        animateParticles();
     </script>
 </body>
 </html>
