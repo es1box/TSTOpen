@@ -69,14 +69,14 @@
 </head>
 <body>
     <h1>Отсчет времени до жамканий)))</h1>
-    <p>Целевая дата: <strong id="target-date">2024-08-02 16:00:00</strong></p>
+    <p>Целевая дата: <strong id="target-date">2024-08-02 19:15:00</strong></p>
     <div id="timer"></div>
     <div class="emoji">🥰 🥰 🥰 🥰 🥰 🥰 🥰 🥰 🥰 🥰</div>
     <canvas id="particleCanvas"></canvas>
 
     <script>
         function updateTimer() {
-            const targetDate = new Date('2024-08-09T17:00:00');
+            const targetDate = new Date('2024-08-09T19:15:00');
             const now = new Date();
             const timeDifference = targetDate - now;
 
@@ -102,7 +102,7 @@
         canvas.height = window.innerHeight;
 
         let particles = [];
-        const particleCount = 300;
+        const particleCount = 200;
         const emojis = ['❤️', '💖', '💛', '💚', '🧡', '❤️', '💜', '💕', '💜', '💖', '💙', '💗', '💘', '💝', '🤍'];
 
         function createParticles() {
